@@ -1,0 +1,56 @@
+{
+  "name": "assistant",
+  "productName": "Assistant",
+  "version": "0.0.1",
+  "description": "",
+  "license": "MIT",
+  "main": "./index.js",
+  "author": {
+    "name": "",
+    "email": "",
+    "url": ""
+  },
+  "scripts": {
+    "test": "xo",
+    "start": "electron .",
+    "build": "electron-packager . --out=dist --asar --overwrite --all",
+    "postinstall": "electron-builder install-app-deps",
+    "package-mac": "electron-packager . --overwrite --platform=darwin --arch=x64 --icon=src/img/icon/appicon.icns --prune=true --out=release-builds",
+    "package-win": "electron-packager . --overwrite --asar=true --platform=win32 --arch=ia32 --icon=src/img/icon/appicon.ico --prune=true --out=release-builds --version-string.CompanyName=CE --version-string.FileDescription=CE --version-string.ProductName=\"Assistant App\"",
+    "package-linux": "electron-packager . --overwrite --platform=linux --arch=x64 --icon=src/img/icon/512x512.png --prune=true --out=release-builds"
+  },
+  "dependencies": {
+    "angular": "^1.6.5",
+    "angular-animate": "^1.6.5",
+    "angular-aria": "^1.6.5",
+    "csv": "^1.1.1",
+    "devtron": "^1.1.0",
+    "electron": "^1.7.6",
+    "electron-debug": "^1.4.0",
+    "electron-json-storage": "^3.0.7",
+    "electron-packager": "^8.0.0",
+    "jquery": "^3.2.1",
+    "should": "^11.2.1",
+    "sqlite3": "^3.1.9",
+    "uikit": "^3.0.0-beta.28",
+    "xo": "^0.18.0"
+  },
+  "devDependencies": {
+    "csv": "^1.1.1",
+    "devtron": "^1.1.0",
+    "electron": "^1.7.6",
+    "electron-builder": "^19.22.2",
+    "electron-packager": "^8.0.0",
+    "node-pre-gyp": "^0.6.36",
+    "should": "^11.2.1",
+    "sqlite3": "^3.1.9",
+    "uikit": "^3.0.0-beta.28",
+    "xo": "^0.18.0"
+  },
+  "xo": {
+    "envs": [
+      "node",
+      "browser"
+    ]
+  }
+}

@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html ng-app="todoApp">
+	<head>
+		<title>Assistant</title>
+		<!-- <link rel="stylesheet" type="text/css" href="node_modules/angular-material/angular-material.min.css"> -->
+
+		<!-- Web Font with Material Icons -->
+		<!-- <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet"> -->
+
+
+		<!--<link rel="stylesheet" href="node_modules/uikit/dist/css/uikit.min.css">-->
+		<link rel="stylesheet" href="src/uikit.css">
+		<link rel="stylesheet" href="src/app.css">
+
+		<!--
+		<script type="text/javascript" src="node_modules/angular/angular.min.js"></script>
+		<script type="text/javascript" src="node_modules/angular-animate/angular-animate.min.js"></script>
+		<script type="text/javascript" src="node_modules/angular-aria/angular-aria.min.js"></script>-->
+
+		<!-- <script src="node_modules/uikit/dist/js/uikit.min.js"></script> -->
+		<!-- <script src="node_modules/uikit/dist/js/uikit-icons.min.js"></script> -->
+
+		<!-- <script type="text/javascript" src="node_modules/angular-material/angular-material.min.js"></script> -->
+		<script type="text/javascript" src="common.js"></script>
+
+		<style>
+			md-card, md-card md-card-header{
+				min-height: 200px;
+			}
+		</style>
+
+	</head>
+
+	<body layout="column" ng-controller="AppCtrl" style="background: #eee">
+		<div class="back"></div>
+		
+		<div class="wrap">
+			
+			<div class="header">
+				
+				<h1>{{options.name}}</h1>
+
+				<button id="button-close" class="button-manage"><span uk-icon="icon: close; ratio: 0.75" class="button-icon"></span></button>
+				<button id="button-hide" class="button-manage"><span uk-icon="icon: minus; ratio: 0.75" class="button-icon"></span></button>
+				<!--<button id="button-settings"><span uk-icon="icon: settings"></span></button>-->
+
+			</div>
+			<div class="nav" uk-switcher="{toggle:'> .nav_btn'}">
+				<div class="nav__btn"><span uk-icon="icon: folder; ratio: 1.5"></span></div>
+				<div class="nav__btn"><span uk-icon="icon: trash; ratio: 1.5"></span></div>
+				<div class="nav__btn nav__btn--bottom"><span uk-icon="icon: settings; ratio: 1.5"></span></div>
+			</div>
+			<div class="content uk-switcher">
+			  <div class="tab">
+					<h2 class="tabtitle">Notes</h2>
+				<div class="new-note">
+					<textarea enter-submit="addNote(newNote)" auto-grow rows="1" spellcheck="false" class="textarea-noteadd" id="textarea-noteadd" ng-model="newNote"></textarea>
+					<button class="uk-button uk-button-primary uk-text-bold uk-text-uppercase button-noteadd" ng-click="addNote(newNote)">Add</button>
+				</div>
+
+				<div class="days">
+					<div class="day" ng-repeat="day in notes">
+						<h3>{{day.day}}</h3>
+						<div class="notes">
+							<div class="note" ng-repeat="note in day.notes">
+								<div data-noteid="{{note.id}}">
+								<span class="note__time">{{note.time}}</span>
+								<span class="note__text" ng-bind-html="note.note" contenteditable="true" ng-model="noteText" ng-change="noteChanged(note.id)">{{note.note}}</span>
+								<span class="note__menu" uk-icon="icon: more"></span>
+								<div uk-dropdown="mode: click; pos: bottom-right">
+								    <ul class="uk-nav uk-dropdown-nav">
+								        <!--<li><a href="#">Edit</a></li>-->
+								        <li><a href="#" ng-click="dbTrashNote(note.id)">To trash</a></li>
+								    </ul>
+								</div>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			  </div>
+			  <div class="tab">
+					<h2 class="tabtitle">Trash</h2>
+					<div class="days">
+					<div class="day" ng-repeat="day in deletednotes">
+							<h3>{{day.day}}</h3>
+							<div class="notes">
+								<div class="note" ng-repeat="note in day.notes">
+									<div data-noteid="{{note.id}}">
+									<span class="note__time">{{note.time}}</span>
+									<span class="note__text" ng-bind-html="note.note" contenteditable="true" ng-model="noteText" ng-change="noteChanged(note.id)">{{note.note}}</span>
+									<span class="note__menu" uk-icon="icon: more"></span>
+									<div uk-dropdown="mode: click; pos: bottom-right">
+										<ul class="uk-nav uk-dropdown-nav">
+											<li><a href="#" ng-click="dbDeleteNote(note.id)">Remove</a></li>
+										</ul>
+									</div>
+									</div>
+								</div>
+							</div>
+						</div>
+						</div>
+			  </div>
+			  <div class="tab">
+					<h2 class="tabtitle">Settings</h2>
+			  </div>
+			</div>
+
+		</div>
+	</body>
+</html>
