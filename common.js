@@ -11,7 +11,7 @@ const Icons = require('uikit/dist/js/uikit-icons')
 UIkit.use(Icons);
 
 var should = require('should');
-var stringify = require('csv-stringify');
+//var stringify = require('csv-stringify');
 
 //require sql.js
 var fs = require('fs');

@@ -15,7 +15,10 @@ app.on('ready', function() {
 		minHeight: 400,
   		minWidth: 400,
 		frame: false,
-		icon: path.join(__dirname, 'img/icon/64x64.png')
+		icon: path.join(__dirname, 'img/icon/64x64.png'),
+		webPreferences: {
+            nodeIntegration: true
+        }
 	});
 	//mainWindow.$ = $;
 
