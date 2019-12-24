@@ -1,6 +1,6 @@
-# app [![XO code style](https://img.shields.io/badge/code_style-XO-5ed9c7.svg)](https://github.com/sindresorhus/xo)
+# Normalin [![XO code style](https://img.shields.io/badge/code_style-XO-5ed9c7.svg)](https://github.com/sindresorhus/xo)
 
-> My superb app
+> Electron notes app
 
 
 ## Dev
@@ -26,4 +26,4 @@ Builds the app for macOS, Linux, and Windows, using [electron-packager](https://
 
 ## License
 
-MIT © [<%= name %>](<%= website %>)
+MIT © Vsevolod Chernikov (chernikov.in)
